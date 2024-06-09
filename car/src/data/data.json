@@ -1,0 +1,435 @@
+{
+    "cars": [
+      {
+        "make": "Toyota",
+        "model": "Corolla",
+        "year": 2022,
+        "color": "White",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 50,
+        "available": true
+      },
+      {
+        "make": "Honda",
+        "model": "Civic",
+        "year": 2021,
+        "color": "Black",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 60,
+        "available": true
+      },
+      {
+        "make": "Ford",
+        "model": "Fusion",
+        "year": 2020,
+        "color": "Silver",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 55,
+        "available": true
+      },
+      {
+        "make": "Chevrolet",
+        "model": "Malibu",
+        "year": 2019,
+        "color": "Blue",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 60,
+        "available": true
+      },
+      {
+        "make": "Nissan",
+        "model": "Altima",
+        "year": 2020,
+        "color": "Red",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 55,
+        "available": true
+      },
+      {
+        "make": "Toyota",
+        "model": "Camry",
+        "year": 2021,
+        "color": "Gray",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 65,
+        "available": true
+      },
+      {
+        "make": "Honda",
+        "model": "Accord",
+        "year": 2020,
+        "color": "White",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 70,
+        "available": true
+      },
+      {
+        "make": "Ford",
+        "model": "Focus",
+        "year": 2021,
+        "color": "Black",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 55,
+        "available": true
+      },
+      {
+        "make": "Chevrolet",
+        "model": "Cruze",
+        "year": 2020,
+        "color": "Blue",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 60,
+        "available": true
+      },
+      {
+        "make": "Nissan",
+        "model": "Sentra",
+        "year": 2019,
+        "color": "Red",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 55,
+        "available": true
+      },
+      {
+        "make": "Toyota",
+        "model": "Yaris",
+        "year": 2020,
+        "color": "Gray",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 65,
+        "available": true
+      },
+      {
+        "make": "Honda",
+        "model": "Fit",
+        "year": 2021,
+        "color": "White",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 70,
+        "available": true
+      },
+      {
+        "make": "Ford",
+        "model": "Fiesta",
+        "year": 2020,
+        "color": "Black",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 55,
+        "available": true
+      },
+      {
+        "make": "Chevrolet",
+        "model": "Spark",
+        "year": 2019,
+        "color": "Blue",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 60,
+        "available": true
+      },
+      {
+        "make": "Nissan",
+        "model": "Versa",
+        "year": 2020,
+        "color": "Red",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 55,
+        "available": true
+      },
+      {
+        "make": "Toyota",
+        "model": "Avalon",
+        "year": 2021,
+        "color": "Gray",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 75,
+        "available": true
+      },
+      {
+        "make": "Honda",
+        "model": "Insight",
+        "year": 2020,
+        "color": "White",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 80,
+        "available": true
+      },
+      {
+        "make": "Ford",
+        "model": "Mustang",
+        "year": 2021,
+        "color": "Black",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 100,
+        "available": true
+      },
+      {
+        "make": "Chevrolet",
+        "model": "Camaro",
+        "year": 2020,
+        "color": "Blue",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 120,
+        "available": true
+      },
+      {
+        "make": "Nissan",
+        "model": "370Z",
+        "year": 2019,
+        "color": "Red",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 110,
+        "available": true
+      },
+      {
+        "make": "Tesla",
+        "model": "Model 3",
+        "year": 2022,
+        "color": "Gray",
+        "fuel_type": "Electric",
+        "transmission": "Automatic",
+        "price_per_day": 150,
+        "available": true
+      },
+      {
+        "make": "BMW",
+        "model": "3 Series",
+        "year": 2021,
+        "color": "White",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 180,
+        "available": true
+      },
+      {
+        "make": "Mercedes-Benz",
+        "model": "C-Class",
+        "year": 2020,
+        "color": "Black",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 200,
+        "available": true
+      },
+      {
+        "make": "Audi",
+        "model": "A4",
+        "year": 2019,
+        "color": "Silver",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 210,
+        "available": true
+      },
+      {
+        "make": "Lexus",
+        "model": "ES",
+        "year": 2021,
+        "color": "Blue",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 220,
+        "available": true
+      },
+      {
+        "make": "Toyota",
+        "model": "RAV4",
+        "year": 2020,
+        "color": "Red",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 100,
+        "available": true
+      },
+      {
+        "make": "Honda",
+        "model": "CR-V",
+        "year": 2021,
+        "color": "Gray",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 110,
+        "available": true
+      },
+      {
+        "make": "Ford",
+        "model": "Escape",
+        "year": 2020,
+        "color": "White",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 105,
+        "available": true
+      },
+      {
+        "make": "Chevrolet",
+        "model": "Equinox",
+        "year": 2019,
+        "color": "Black",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 110,
+        "available": true
+      },
+      {
+        "make": "Nissan",
+        "model": "Rogue",
+        "year": 2020,
+        "color": "Blue",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 115,
+        "available": true
+      },
+      {
+        "make": "Toyota",
+        "model": "Highlander",
+        "year": 2021,
+        "color": "Red",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 120,
+        "available": true
+      },
+      {
+        "make": "Honda",
+        "model": "Pilot",
+        "year": 2020,
+        "color": "Gray",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 130,
+        "available": true
+      },
+      {
+        "make": "Ford",
+        "model": "Explorer",
+        "year": 2019,
+        "color": "White",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 125,
+        "available": true
+      },
+      {
+        "make": "Chevrolet",
+        "model": "Traverse",
+        "year": 2020,
+        "color": "Black",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 130,
+        "available": true
+      },
+      {
+        "make": "Nissan",
+        "model": "Murano",
+        "year": 2021,
+        "color": "Blue",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 135,
+        "available": true
+      },
+      {
+        "make": "Toyota",
+        "model": "Sienna",
+        "year": 2020,
+        "color": "Red",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 140,
+        "available": true
+      },
+      {
+        "make": "Honda",
+        "model": "Odyssey",
+        "year": 2021,
+        "color": "Gray",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 145,
+        "available": true
+      },
+      {
+        "make": "Ford",
+        "model": "Transit",
+        "year": 2020,
+        "color": "White",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 150,
+        "available": true
+      },
+      {
+        "make": "Chevrolet",
+        "model": "Express",
+        "year": 2019,
+        "color": "Black",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 155,
+        "available": true
+      },
+      {
+        "make": "Nissan",
+        "model": "NV3500",
+        "year": 2020,
+        "color": "Blue",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 160,
+        "available": true
+      },
+      {
+        "make": "Tesla",
+        "model": "Model X",
+        "year": 2021,
+        "color": "Red",
+        "fuel_type": "Electric",
+        "transmission": "Automatic",
+        "price_per_day": 250,
+        "available": true
+      },
+      {
+        "make": "BMW",
+        "model": "X5",
+        "year": 2020,
+        "color": "Gray",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 300,
+        "available": true
+      },
+      {
+        "make": "Mercedes-Benz",
+        "model": "GLE",
+        "year": 2019,
+        "color": "White",
+        "fuel_type": "Gasoline",
+        "transmission": "Automatic",
+        "price_per_day": 320,
+        "available": true
+      }
+    ]
+  }
+  
