@@ -1,25 +1,21 @@
 import {
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
   Image,
-  Heading,
-  Center,
   Text,
+  Divider,
+  TableContainer,
+  Table,
+  Thead,
+  Tr,
+  Th,
+  Tbody,
+  Td,
+  HStack,
+  Badge,
 } from "@chakra-ui/react";
-
-type carCardProps = {
-  make: string;
-  model: string;
-  year: number;
-  color: string;
-  fuel_type: string;
-  transmission: string;
-  price_per_day: number;
-  available: string;
-  image: string;
-};
+import { carCardProps } from "../Types/carCardProps";
 
 export default function carCard({
   make,
@@ -33,20 +29,78 @@ export default function carCard({
   image,
 }: carCardProps) {
   return (
-    <Card w={230}>
-      <CardHeader>
-        <Image
-          src={`./assets/images/${image}`}
-          borderRadius="md"
-          w="full"
-          h={120}
-        ></Image>
-      </CardHeader>
-      <CardBody>
-        <Heading fontSize="2xl" align="center">
-          {make}
-        </Heading>
+    <Card w={230} align={"center"}>
+      <Badge
+        fontSize="0.8em"
+        colorScheme={available == "true" ? "green" : "red"}
+        position={"absolute"}
+        style={{ top: "0", right: "0", transform: "translate(10%, -30%)" }}
+      >
+        {available == "true" ? "Available" : "Taken"}
+      </Badge>
+      <Image
+        src={`./assets/images/${image}`}
+        borderRadius="md"
+        w="full"
+        h={120}
+        objectFit="cover"
+      ></Image>
+
+      <CardBody pt={3}>
+        <HStack justify={"center"}>
+          <Text fontSize="2xl" as={"b"} textAlign={"center"}>
+            {make}
+          </Text>
+          <Text color={"gray.500"} fontSize={"xl"} textAlign={"center"}>
+            {" "}
+            {model}{" "}
+          </Text>
+        </HStack>
+
+        <TableContainer pt={2}>
+          <Table variant={"simple"}>
+            <Thead>
+              <Tr>
+                <Th fontSize={10} p={0} textAlign={"center"}>
+                  Fuel
+                </Th>
+                <Th fontSize={10} p={2} textAlign={"center"}>
+                  Transm.
+                </Th>
+                <Th fontSize={10} p={0} textAlign={"center"}>
+                  Color
+                </Th>
+                <Th fontSize={10} p={2} textAlign={"center"}>
+                  Year
+                </Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              <Tr>
+                <Td fontSize={11} p={0} textAlign={"center"}>
+                  {fuel_type}
+                </Td>
+                <Td fontSize={11} p={2} textAlign={"center"}>
+                  {transmission}
+                </Td>
+                <Td fontSize={11} p={0} textAlign={"center"}>
+                  {color}
+                </Td>
+                <Td fontSize={11} p={2} textAlign={"center"}>
+                  {year}
+                </Td>
+              </Tr>
+            </Tbody>
+          </Table>
+        </TableContainer>
       </CardBody>
+      <Divider color="gray.300" />
+      <CardFooter>
+        <Text as="b" mx="1">
+          {price_per_day}
+        </Text>
+        <Text>US$/day</Text>
+      </CardFooter>
     </Card>
   );
 }

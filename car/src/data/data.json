@@ -7,7 +7,7 @@
     "fuel_type": "Gasoline",
     "transmission": "Automatic",
     "price_per_day": 50,
-    "available": "true",
+    "available": "false",
     "image": "toyota.jpeg"
   },
   {
@@ -73,7 +73,7 @@
     "fuel_type": "Gasoline",
     "transmission": "Automatic",
     "price_per_day": 70,
-    "available": "true",
+    "available": "false",
     "image": "honda.jpeg"
   },
   {
