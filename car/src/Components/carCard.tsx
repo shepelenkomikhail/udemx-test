@@ -14,6 +14,7 @@ import {
   Td,
   HStack,
   Badge,
+  Button,
 } from "@chakra-ui/react";
 import { carCardProps } from "../Types/carCardProps";
 
@@ -96,10 +97,12 @@ export default function carCard({
       </CardBody>
       <Divider color="gray.300" />
       <CardFooter>
-        <Text as="b" mx="1">
-          {price_per_day}
-        </Text>
-        <Text>US$/day</Text>
+        <Button variant="outline" bg={"orange.100"} m={-2}>
+          <Text as="b" mx="1">
+            {price_per_day}
+          </Text>
+          <Text>US$/day</Text>
+        </Button>
       </CardFooter>
     </Card>
   );

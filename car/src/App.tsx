@@ -19,7 +19,8 @@ import { SearchIcon, Search2Icon } from "@chakra-ui/icons";
 import cars from "./data/data.json";
 import CarCard from "./Components/carCard";
 import { carCardProps } from "./Types/carCardProps";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import StackComponent from "./Components/StackComponent";
 
 const getFilteredItems = (query: string, items: carCardProps[]) => {
   if (!query) return items;
@@ -49,6 +50,10 @@ function App() {
   const [filteredItems, setFilteredItems] = useState(
     getFilteredItems(query, cars)
   );
+
+  useEffect(() => {
+    setFilteredItems(getFilteredItems(query, cars));
+  }, [query]);
 
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
@@ -80,10 +85,10 @@ function App() {
       <Center pt={"30"} pb={"5"} fontSize={"4xl"} as="b" color="orange.500">
         Choose your dream car!
       </Center>
-      <Container>
-        <HStack>
+      <Container centerContent>
+        <StackComponent>
           <InputGroup>
-            <VStack>
+            <VStack align="stretch" width={"full"}>
               <Text color={"gray.400"}>Model, name..</Text>
 
               <Box position="relative" width="100%">
@@ -142,7 +147,7 @@ function App() {
               </HStack>
             </FormControl>
           </form>
-        </HStack>
+        </StackComponent>
       </Container>
 
       <Wrap mx={20} my={10} justify="center" spacing={4}>
