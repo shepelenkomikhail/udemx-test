@@ -11,11 +11,8 @@ import {
   VStack,
   Text,
   Box,
-  Circle,
   Button,
   FormControl,
-  FormHelperText,
-  FormErrorMessage,
 } from "@chakra-ui/react";
 
 import { SearchIcon, Search2Icon } from "@chakra-ui/icons";
@@ -32,9 +29,26 @@ const getFilteredItems = (query: string, items: carCardProps[]) => {
   );
 };
 
+const getFilteredItemsByDates = (
+  queryDateFrom: Date,
+  queryDateTo: Date,
+  items: carCardProps[]
+) => {
+  if (!queryDateFrom || !queryDateTo) return items;
+  return items.filter(
+    (item: carCardProps) =>
+      item.available == "true" ||
+      (item.available == "false" &&
+        item.unavailable_dates &&
+        new Date(item?.unavailable_dates[1]) <= queryDateFrom)
+  );
+};
+
 function App() {
   const [query, setQuery] = useState("");
-  const filteredItems = getFilteredItems(query, cars);
+  const [filteredItems, setFilteredItems] = useState(
+    getFilteredItems(query, cars)
+  );
 
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
@@ -43,19 +57,27 @@ function App() {
   const handleInputDate = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitted(true);
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const formJson = Object.fromEntries(formData);
-    console.log(formJson);
+    const formData = new FormData(e.currentTarget);
 
-    setDateFrom(String(formJson.dateFrom));
-    setDateFrom(String(formJson.dateTo));
+    const dateFromStr = formData.get("dateFrom") as string;
+    const dateToStr = formData.get("dateTo") as string;
+
+    setDateFrom(dateFromStr);
+    setDateTo(dateToStr);
+
+    const fromDate = dateFromStr ? new Date(dateFromStr) : undefined;
+    const toDate = dateToStr ? new Date(dateToStr) : undefined;
+
+    if (fromDate && toDate) {
+      setFilteredItems(getFilteredItemsByDates(fromDate, toDate, cars));
+    }
   };
+
   const isError: boolean = dateTo == "" && dateFrom == "";
 
   return (
     <ChakraProvider>
-      <Center p="30" fontSize={"4xl"} as="b" color="orange.500">
+      <Center pt={"30"} pb={"5"} fontSize={"4xl"} as="b" color="orange.500">
         Choose your dream car!
       </Center>
       <Container>
@@ -98,7 +120,7 @@ function App() {
 
                 <InputGroup>
                   <VStack>
-                    <Text color="gray.400" width={150} textAlign={"center"}>
+                    <Text color="gray.400" textAlign={"center"}>
                       {" "}
                       To{" "}
                     </Text>
@@ -106,6 +128,7 @@ function App() {
                       type="date"
                       value={dateTo}
                       name="dateTo"
+                      width={150}
                       onChange={(e) => {
                         setDateTo(e.target.value);
                       }}

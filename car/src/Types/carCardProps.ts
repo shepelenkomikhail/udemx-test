@@ -9,4 +9,5 @@ export type carCardProps = {
     price_per_day: number;
     available: string;
     image: string;
+    unavailable_dates?: string[];
   };
