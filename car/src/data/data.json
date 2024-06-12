@@ -255,7 +255,7 @@
     "image": "honda.jpeg"
   },
   {
-    "make": "Mercedes-Benz",
+    "make": "Mercedes",
     "model": "GLE",
     "year": 2019,
     "color": "White",
@@ -411,7 +411,7 @@
     "unavailable_dates": ["2024-06-11", "2024-06-12"]
   },
   {
-    "make": "Mercedes-Benz",
+    "make": "Mercedes",
     "model": "C-Class",
     "year": 2020,
     "color": "Black",

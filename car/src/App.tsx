@@ -25,6 +25,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PurchasePage from "./Components/PurchasePage";
 import React from "react";
 import AdminPage from "./Components/AdminPage";
+import Pagination from "./Components/Pagination";
 
 const getFilteredItems = (query: string, items: carCardProps[]) => {
   if (!query) return items;
@@ -54,14 +55,21 @@ function App() {
   const [filteredItems, setFilteredItems] = useState(
     getFilteredItems(query, cars)
   );
-
-  useEffect(() => {
-    setFilteredItems(getFilteredItems(query, cars));
-  }, [query]);
-
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setpostsPerPage] = useState(8);
+  let lastPostIndex = currentPage * postsPerPage;
+  let firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = filteredItems.slice(firstPostIndex, lastPostIndex);
+  const [currentPostsFiltered, setCurrentPostsFiltered] =
+    useState(currentPosts);
+
+  useEffect(() => {
+    setFilteredItems(getFilteredItems(query, cars));
+    setCurrentPostsFiltered(getFilteredItems(query, cars));
+  }, [query]);
 
   const handleInputDate = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -166,7 +174,7 @@ function App() {
                 </Container>
 
                 <Wrap mx={20} my={10} justify="center" spacing={4}>
-                  {filteredItems.map((car, i) => {
+                  {currentPosts.map((car, i) => {
                     return (
                       <WrapItem key={i}>
                         <CarCard {...car} />
@@ -174,6 +182,13 @@ function App() {
                     );
                   })}
                 </Wrap>
+                <Center pb="8">
+                  <Pagination
+                    totalPosts={filteredItems.length}
+                    postsPerPage={postsPerPage}
+                    setCurrentPage={setCurrentPage}
+                  ></Pagination>
+                </Center>
               </div>
             }
           />
