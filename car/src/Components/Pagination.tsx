@@ -28,7 +28,11 @@ const Pagination = ({
     <HStack spacing={2}>
       {pages.map((page, index) => {
         return (
-          <Button key={index} onClick={() => handleClick(page)}>
+          <Button
+            key={index}
+            colorScheme={currentPage === page ? "blue" : "gray"}
+            onClick={() => handleClick(page)}
+          >
             {page}
           </Button>
         );

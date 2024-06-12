@@ -18,7 +18,7 @@ const PurchasePage = () => {
   } = location.state;
 
   return (
-    <Box pt={"5%"} bg={"blue.100"}>
+    <Box pt={"5%"} bg={"gray.50"} minHeight="100vh" width="100vw">
       <Flex justify={"center"}>
         <HStack
           spacing={20}
