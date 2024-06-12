@@ -16,7 +16,10 @@ import {
   Badge,
   Button,
 } from "@chakra-ui/react";
+import React from "react";
+import ReactDOM from "react-dom";
 import { carCardProps } from "../Types/carCardProps";
+import { useNavigate } from "react-router-dom";
 
 export default function carCard({
   make,
@@ -29,6 +32,22 @@ export default function carCard({
   available,
   image,
 }: carCardProps) {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/purchase", {
+      state: {
+        make,
+        model,
+        year,
+        color,
+        fuel_type,
+        transmission,
+        price_per_day,
+        available,
+        image,
+      },
+    });
+  };
   return (
     <Card w={230} align={"center"}>
       <Badge
@@ -97,7 +116,12 @@ export default function carCard({
       </CardBody>
       <Divider color="gray.300" />
       <CardFooter>
-        <Button variant="outline" bg={"orange.100"} m={-2}>
+        <Button
+          variant="outline"
+          bg={"orange.100"}
+          m={-2}
+          onClick={handleClick}
+        >
           <Text as="b" mx="1">
             {price_per_day}
           </Text>
