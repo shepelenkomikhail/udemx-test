@@ -1,5 +1,5 @@
-import { Box, Button, HStack } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { Button, HStack } from "@chakra-ui/react";
+import { useState } from "react";
 
 type PaginationProps = {
   totalPosts: number;

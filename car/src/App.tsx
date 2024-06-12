@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { SearchIcon, Search2Icon } from "@chakra-ui/icons";
 import cars from "./data/data.json";
-import CarCard from "./Components/carCard";
+import CarCard from "./Components/CarCardComponent";
 import { carCardProps } from "./Types/carCardProps";
 import { useEffect, useState } from "react";
 import StackComponent from "./Components/StackComponent";
@@ -24,14 +24,18 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PurchasePage from "./Components/PurchasePage";
 import AdminPage from "./Components/AdminPage";
 import Pagination from "./Components/Pagination";
+import EditCar from "./Components/EditCar";
+import Add from "./Components/AddCar";
 
 const getFilteredItems = (query, items) => {
   if (!query) return items;
-  return items.filter(
-    ({ item }: carCardProps) =>
-      item.make.toLowerCase().includes(query.toLowerCase()) ||
-      item.model.toLowerCase().includes(query.toLowerCase())
-  );
+  return items.filter((item) => {
+    const { make, model } = item;
+    return (
+      make.toLowerCase().includes(query.toLowerCase()) ||
+      model.toLowerCase().includes(query.toLowerCase())
+    );
+  });
 };
 
 const getFilteredItemsByDates = (queryDateFrom, queryDateTo, items) => {
@@ -105,7 +109,9 @@ function App() {
                   <StackComponent>
                     <InputGroup>
                       <VStack align="stretch" width="full">
-                        <Text color="gray.400">Model, name...</Text>
+                        <Text color="gray.400" textAlign={"center"}>
+                          Model, name...
+                        </Text>
                         <Box position="relative" width="100%">
                           <InputLeftElement pointerEvents="none">
                             <SearchIcon color="gray.300" />
@@ -155,7 +161,7 @@ function App() {
                 <Wrap mx={20} my={10} justify="center" spacing={4}>
                   {currentPosts.map((car, i) => (
                     <WrapItem key={i}>
-                      <CarCard {...car} />
+                      <CarCard {...car} isAdmin={false} />
                     </WrapItem>
                   ))}
                 </Wrap>
@@ -171,6 +177,8 @@ function App() {
           />
           <Route path="/purchase" element={<PurchasePage />} />
           <Route path="/admin" element={<AdminPage />} />
+          <Route path="/edit" element={<EditCar />} />
+          <Route path="/add" element={<Add />} />
         </Routes>
       </Router>
     </ChakraProvider>

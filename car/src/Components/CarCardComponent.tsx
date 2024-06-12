@@ -16,8 +16,6 @@ import {
   Badge,
   Button,
 } from "@chakra-ui/react";
-import React from "react";
-import ReactDOM from "react-dom";
 import { carCardProps } from "../Types/carCardProps";
 import { useNavigate } from "react-router-dom";
 
@@ -31,10 +29,27 @@ export default function carCard({
   price_per_day,
   available,
   image,
-}: carCardProps) {
+  isAdmin,
+}: carCardProps & { isAdmin: boolean }) {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate("/purchase", {
+    available == "true" &&
+      navigate("/purchase", {
+        state: {
+          make,
+          model,
+          year,
+          color,
+          fuel_type,
+          transmission,
+          price_per_day,
+          available,
+          image,
+        },
+      });
+  };
+  const handleClickAdmin = () => {
+    navigate("/edit", {
       state: {
         make,
         model,
@@ -48,6 +63,7 @@ export default function carCard({
       },
     });
   };
+
   return (
     <Card w={230} align={"center"}>
       <Badge
@@ -116,17 +132,31 @@ export default function carCard({
       </CardBody>
       <Divider color="gray.300" />
       <CardFooter>
-        <Button
-          variant="outline"
-          bg={"orange.100"}
-          m={-2}
-          onClick={handleClick}
-        >
-          <Text as="b" mx="1">
-            {price_per_day}
-          </Text>
-          <Text>US$/day</Text>
-        </Button>
+        {!isAdmin && (
+          <Button
+            variant="outline"
+            bg={"orange.100"}
+            m={-2}
+            onClick={handleClick}
+          >
+            <Text as="b" mx="1">
+              {price_per_day}
+            </Text>
+            <Text>US$/day</Text>
+          </Button>
+        )}
+        {isAdmin && (
+          <Button
+            variant="outline"
+            bg={"orange.100"}
+            m={-2}
+            onClick={handleClickAdmin}
+          >
+            <Text as="b" mx="1">
+              Edit
+            </Text>
+          </Button>
+        )}
       </CardFooter>
     </Card>
   );
