@@ -9,9 +9,10 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { carCardProps } from "../Types/carCardProps";
+import carCardProps from "../Types/carCardProps";
 
 export const EditForm = ({
+  id,
   make,
   model,
   year,
@@ -21,7 +22,6 @@ export const EditForm = ({
   price_per_day,
   available,
   image,
-  isAdmin,
 }: carCardProps) => {
   const [price, setPrice] = useState(0);
   const navigate = useNavigate();

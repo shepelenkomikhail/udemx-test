@@ -17,7 +17,7 @@ import {
 import { SearchIcon, Search2Icon } from "@chakra-ui/icons";
 import cars from "../data/data.json";
 import CarCard from "./CarCardComponent";
-import { carCardProps } from "../Types/carCardProps";
+import carCardProps from "../Types/carCardProps";
 import { useEffect, useState } from "react";
 import StackComponent from "./StackComponent";
 import {
@@ -44,7 +44,7 @@ const getFilteredItems = (query, items) => {
 const getFilteredItemsByDates = (queryDateFrom, queryDateTo, items) => {
   if (!queryDateFrom || !queryDateTo) return items;
   return items.filter(
-    ({ item }: carCardProps) =>
+    ({ item }) =>
       item.available === "true" ||
       (item.available === "false" &&
         item.unavailable_dates &&

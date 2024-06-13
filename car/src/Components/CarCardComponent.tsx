@@ -16,7 +16,7 @@ import {
   Badge,
   Button,
 } from "@chakra-ui/react";
-import { carCardProps } from "../Types/carCardProps";
+import carCardProps from "../Types/carCardProps";
 import { useNavigate } from "react-router-dom";
 
 export default function carCard({

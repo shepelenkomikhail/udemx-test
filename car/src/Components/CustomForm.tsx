@@ -9,23 +9,54 @@ import {
   FormLabel,
   Text,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { MyContext } from "../context/myProvider";
 
 type CustomFormProps = {
   price_per_day: number;
+  id: number;
 };
 
-export const CustomForm = ({ price_per_day }: CustomFormProps) => {
+export const CustomForm = ({ price_per_day, id }: CustomFormProps) => {
   const [price, setPrice] = useState(0);
   const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
+  const { data, setData } = useContext(MyContext);
 
-  if (success) {
-    setTimeout(() => {
-      navigate("/");
-    }, 500);
-  }
+  const handleSubmit = (values, { setSubmitting }) => {
+    console.log(values);
+    console.log(data);
+    const newData = data.map((car) => {
+      if (car.id === id) {
+        console.log("found");
+        return {
+          ...car,
+          available: "false",
+          unavailable_dates: [
+            new Date(Date.now()).toISOString(),
+            new Date(
+              Date.now() + parseInt(values.days) * 86400000
+            ).toISOString(),
+          ],
+        };
+      }
+      return car;
+    });
+
+    console.log(newData);
+    console.log(typeof setData); // Should log 'function'
+
+    setData(newData);
+    setSuccess(true);
+    setSubmitting(false);
+  };
+
+  // if (success) {
+  //   setTimeout(() => {
+  //     navigate("/");
+  //   }, 500);
+  // }
 
   return (
     <Formik
@@ -45,11 +76,7 @@ export const CustomForm = ({ price_per_day }: CustomFormProps) => {
           .min(1, "Choose at least 1 day!")
           .required("Days field is required!"),
       })}
-      onSubmit={(values, { setSubmitting }) => {
-        console.log(values);
-        setSubmitting(false);
-        setSuccess(true);
-      }}
+      onSubmit={handleSubmit}
     >
       {({ errors, touched, setFieldValue }) => (
         <Box

@@ -1,5 +1,5 @@
-export type carCardProps = {
-    [x: string]: any;
+export default interface carCardProps {
+    id: number;
     make: string;
     model: string;
     year: number;

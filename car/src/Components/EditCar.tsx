@@ -6,6 +6,7 @@ import { EditForm } from "./EditForm";
 const EditCar = () => {
   const location = useLocation();
   const {
+    id,
     make,
     model,
     year,
@@ -29,6 +30,7 @@ const EditCar = () => {
           bg={"yellow.50"}
         >
           <CarCard
+            id={id}
             make={make}
             model={model}
             year={year}
@@ -41,6 +43,7 @@ const EditCar = () => {
             isAdmin={true}
           />
           <EditForm
+            id={id}
             make={make}
             model={model}
             year={year}

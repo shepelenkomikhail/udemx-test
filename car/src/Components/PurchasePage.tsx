@@ -6,6 +6,7 @@ import { CustomForm } from "./CustomForm";
 const PurchasePage = () => {
   const location = useLocation();
   const {
+    id,
     make,
     model,
     year,
@@ -30,6 +31,7 @@ const PurchasePage = () => {
           bg={"yellow.50"}
         >
           <CarCard
+            id={id}
             make={make}
             model={model}
             year={year}
@@ -41,7 +43,7 @@ const PurchasePage = () => {
             image={image}
             isAdmin={false}
           />
-          <CustomForm price_per_day={price_per_day}></CustomForm>
+          <CustomForm price_per_day={price_per_day} id={id}></CustomForm>
         </HStack>
       </Flex>
     </Box>
