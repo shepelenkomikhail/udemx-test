@@ -25,11 +25,8 @@ export const CustomForm = ({ price_per_day, id }: CustomFormProps) => {
   const { data, setData } = useContext(MyContext);
 
   const handleSubmit = (values, { setSubmitting }) => {
-    console.log(values);
-    console.log(data);
     const newData = data.map((car) => {
       if (car.id === id) {
-        console.log("found");
         return {
           ...car,
           available: "false",
@@ -44,19 +41,16 @@ export const CustomForm = ({ price_per_day, id }: CustomFormProps) => {
       return car;
     });
 
-    console.log(newData);
-    console.log(typeof setData); // Should log 'function'
-
     setData(newData);
     setSuccess(true);
     setSubmitting(false);
   };
 
-  // if (success) {
-  //   setTimeout(() => {
-  //     navigate("/");
-  //   }, 500);
-  // }
+  if (success) {
+    setTimeout(() => {
+      navigate("/");
+    }, 500);
+  }
 
   return (
     <Formik

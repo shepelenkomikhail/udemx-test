@@ -20,6 +20,7 @@ import carCardProps from "../Types/carCardProps";
 import { useNavigate } from "react-router-dom";
 
 export default function carCard({
+  id,
   make,
   model,
   year,
@@ -36,6 +37,7 @@ export default function carCard({
     available == "true" &&
       navigate("/purchase", {
         state: {
+          id,
           make,
           model,
           year,
@@ -51,6 +53,7 @@ export default function carCard({
   const handleClickAdmin = () => {
     navigate("/edit", {
       state: {
+        id,
         make,
         model,
         year,
