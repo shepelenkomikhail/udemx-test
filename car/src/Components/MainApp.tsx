@@ -95,11 +95,6 @@ export default function MainApp() {
   }, [currentPage, filteredItems, postsPerPage]);
 
   useEffect(() => {
-    setData(cars);
-    console.log("setting data from SetData context" + JSON.stringify(data[0]));
-  }, [setData]);
-
-  useEffect(() => {
     setCurrentPosts(data);
     console.log(
       "setting data from setCurrentPosts when changed data " +
