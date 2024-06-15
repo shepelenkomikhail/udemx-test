@@ -29,19 +29,6 @@ const EditCar = () => {
           borderRadius={"md"}
           bg={"yellow.50"}
         >
-          <CarCard
-            id={id}
-            make={make}
-            model={model}
-            year={year}
-            color={color}
-            fuel_type={fuel_type}
-            transmission={transmission}
-            price_per_day={price_per_day}
-            available={available}
-            image={image}
-            isAdmin={true}
-          />
           <EditForm
             id={id}
             make={make}
