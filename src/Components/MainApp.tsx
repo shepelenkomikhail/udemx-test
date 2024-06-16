@@ -13,6 +13,7 @@ import {
   Box,
   Button,
   FormControl,
+  background,
 } from "@chakra-ui/react";
 import { SearchIcon, Search2Icon } from "@chakra-ui/icons";
 import CarCard from "./CarCardComponent";
@@ -112,7 +113,7 @@ export default function MainApp() {
   const isError = !dateTo && !dateFrom && submitted;
 
   return (
-    <Box bg="gray.50" w={"100vw"} h={"100vw"}>
+    <Box bg="gray.50" w={"100vw"} h={"100vw"} style={{ height: "100vw" }}>
       <Center pt="30" pb="5" fontSize="4xl" as="b" color="orange.500">
         Choose your dream car!
       </Center>
@@ -176,7 +177,7 @@ export default function MainApp() {
           </WrapItem>
         ))}
       </Wrap>
-      <Center pb="8">
+      <Center pb="8" bg={"gray.50"}>
         <Pagination
           totalPosts={filteredItems.length}
           postsPerPage={postsPerPage}

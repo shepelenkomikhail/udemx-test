@@ -25,7 +25,7 @@ const Pagination = ({
   }
 
   return (
-    <HStack spacing={2}>
+    <HStack spacing={2} bg={"gray.50"}>
       {pages.map((page, index) => {
         return (
           <Button
