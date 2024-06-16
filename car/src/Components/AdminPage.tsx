@@ -15,20 +15,12 @@ import {
   FormControl,
 } from "@chakra-ui/react";
 import { SearchIcon, Search2Icon } from "@chakra-ui/icons";
-import cars from "../data/data.json";
 import CarCard from "./CarCardComponent";
-import carCardProps from "../Types/carCardProps";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import StackComponent from "./StackComponent";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
-import PurchasePage from "./PurchasePage";
+import { BrowserRouter as Router, useNavigate } from "react-router-dom";
 import Pagination from "./Pagination";
+import { MyContext } from "../context/myProvider";
 
 const getFilteredItems = (query, items) => {
   if (!query) return items;
@@ -55,13 +47,32 @@ const getFilteredItemsByDates = (queryDateFrom, queryDateTo, items) => {
 function AdminPage() {
   const [query, setQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
+
   const [filteredItems, setFilteredItems] = useState([]);
+
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
+
   const [submitted, setSubmitted] = useState(false);
+
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(8);
+  const [postsPerPage, setPostsPerPage] = useState(0);
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth >= 1200) {
+        setPostsPerPage(12);
+      } else {
+        setPostsPerPage(8);
+      }
+    }
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const [currentPosts, setCurrentPosts] = useState([]);
+
+  const context = useContext(MyContext);
+  const { data } = context;
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -71,7 +82,7 @@ function AdminPage() {
   }, [query]);
 
   useEffect(() => {
-    let updatedFilteredItems = getFilteredItems(debouncedQuery, cars);
+    let updatedFilteredItems = getFilteredItems(debouncedQuery, data);
     if (dateFrom && dateTo) {
       updatedFilteredItems = getFilteredItemsByDates(
         new Date(dateFrom),
@@ -88,6 +99,10 @@ function AdminPage() {
     setCurrentPosts(filteredItems.slice(indexOfFirstPost, indexOfLastPost));
   }, [currentPage, filteredItems, postsPerPage]);
 
+  useEffect(() => {
+    setFilteredItems(data);
+  }, [data]);
+
   const handleInputDate = (e) => {
     e.preventDefault();
     setSubmitted(true);
@@ -100,16 +115,22 @@ function AdminPage() {
   const handleAddCar = () => {
     navigate("/add");
   };
+  const isSmallScreen = window.innerWidth <= 600;
 
   return (
     <ChakraProvider>
-      <Box bg="gray.50" w={"100vw"} h={"80vw"}>
+      <Box bg="gray.50" w={"100vw"} h={"100vw"}>
         <Center pt="30" pb="5" fontSize="4xl" as="b" color="orange.500">
           Welcome Admin!
         </Center>
         <Button
           position={"absolute"}
-          style={{ top: "0", right: "0", margin: "30px" }}
+          style={{
+            top: "0",
+            right: "0",
+            margin: isSmallScreen ? "0" : "30px",
+            backgroundColor: "orange.200",
+          }}
           bg={"orange.200"}
           onClick={handleAddCar}
         >

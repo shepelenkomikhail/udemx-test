@@ -20,7 +20,6 @@ import StackComponent from "./StackComponent";
 
 import Pagination from "./Pagination";
 import { MyContext } from "../context/myProvider";
-import cars from "../data/data.json";
 
 const getFilteredItems = (query, items) => {
   if (!query) return items;
@@ -56,11 +55,23 @@ export default function MainApp() {
   const [submitted, setSubmitted] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(8);
+  const [postsPerPage, setPostsPerPage] = useState(0);
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth >= 1200) {
+        setPostsPerPage(12);
+      } else {
+        setPostsPerPage(8);
+      }
+    }
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const [currentPosts, setCurrentPosts] = useState([]);
 
   const context = useContext(MyContext);
-  const { data, setData } = context;
+  const { data } = context;
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -79,27 +90,16 @@ export default function MainApp() {
       );
     }
     setFilteredItems(updatedFilteredItems);
-    console.log(
-      "set filtered items when [debouncedQuery, dateFrom, dateTo] changed" +
-        JSON.stringify(updatedFilteredItems[0])
-    );
   }, [debouncedQuery, dateFrom, dateTo]);
 
   useEffect(() => {
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     setCurrentPosts(filteredItems.slice(indexOfFirstPost, indexOfLastPost));
-    console.log(
-      "set current posts for pagination: " + JSON.stringify(currentPosts[0])
-    );
   }, [currentPage, filteredItems, postsPerPage]);
 
   useEffect(() => {
     setCurrentPosts(data);
-    console.log(
-      "setting data from setCurrentPosts when changed data " +
-        JSON.stringify(currentPosts[0])
-    );
   }, [data]);
 
   const handleInputDate = (e) => {
@@ -110,10 +110,9 @@ export default function MainApp() {
   };
 
   const isError = !dateTo && !dateFrom && submitted;
-  console.log("current posts before render:" + JSON.stringify(currentPosts[0]));
 
   return (
-    <Box bg="gray.50" w={"100vw"} h={"80vw"}>
+    <Box bg="gray.50" w={"100vw"} h={"100vw"}>
       <Center pt="30" pb="5" fontSize="4xl" as="b" color="orange.500">
         Choose your dream car!
       </Center>

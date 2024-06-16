@@ -1,17 +1,25 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import {
-  Alert,
-  AlertIcon,
   Box,
   Button,
   Flex,
   FormLabel,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "../context/myProvider";
+import React from "react";
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
+} from "@chakra-ui/react";
 
 type CustomFormProps = {
   price_per_day: number;
@@ -23,6 +31,9 @@ export const CustomForm = ({ price_per_day, id }: CustomFormProps) => {
   const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
   const { data, setData } = useContext(MyContext);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const cancelRef = React.useRef();
 
   const handleSubmit = (values, { setSubmitting }) => {
     const newData = data.map((car) => {
@@ -44,13 +55,8 @@ export const CustomForm = ({ price_per_day, id }: CustomFormProps) => {
     setData(newData);
     setSuccess(true);
     setSubmitting(false);
+    onOpen();
   };
-
-  if (success) {
-    setTimeout(() => {
-      navigate("/");
-    }, 500);
-  }
 
   return (
     <Formik
@@ -185,10 +191,33 @@ export const CustomForm = ({ price_per_day, id }: CustomFormProps) => {
             </Flex>
           </Form>
           {success && (
-            <Alert status="success">
-              <AlertIcon />
-              Car is rented!
-            </Alert>
+            <AlertDialog
+              isOpen={isOpen}
+              leastDestructiveRef={cancelRef}
+              onClose={onClose}
+              isCentered
+              closeOnOverlayClick={false}
+            >
+              <AlertDialogOverlay>
+                <AlertDialogContent mt={-20} mb={20}>
+                  <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                    Success!
+                  </AlertDialogHeader>
+                  <AlertDialogBody>
+                    You've rented a car successfully!
+                  </AlertDialogBody>
+                  <AlertDialogFooter>
+                    <Button
+                      ref={cancelRef}
+                      onClick={() => navigate("/")}
+                      bg="green.100"
+                    >
+                      Back to the main page
+                    </Button>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialogOverlay>
+            </AlertDialog>
           )}
         </Box>
       )}

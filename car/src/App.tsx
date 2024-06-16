@@ -5,7 +5,7 @@ import MainApp from "./Components/MainApp";
 import PurchasePage from "./Components/PurchasePage";
 import AdminPage from "./Components/AdminPage";
 import EditCar from "./Components/EditCar";
-import Add from "./Components/AddCar";
+import AddCar from "./Components/AddCar";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
             <Route path="/purchase" element={<PurchasePage />} />
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/edit" element={<EditCar />} />
-            <Route path="/add" element={<Add />} />
+            <Route path="/add" element={<AddCar />} />
           </Routes>
         </Router>
       </MyProvider>
