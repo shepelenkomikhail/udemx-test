@@ -11,11 +11,11 @@ function App() {
   return (
     <ChakraProvider>
       <MyProvider>
-        <Router>
+        <Router basename="/udemx-test">
           <Routes>
-            <Route path="/udemx-test" element={<MainApp />} />
+            <Route path="/" element={<MainApp />} />
             <Route path="/purchase" element={<PurchasePage />} />
-            <Route path="/udemx-test/admin" element={<AdminPage />} />
+            <Route path="/admin" element={<AdminPage />} />
             <Route path="/edit" element={<EditCar />} />
             <Route path="/add" element={<AddCar />} />
           </Routes>
