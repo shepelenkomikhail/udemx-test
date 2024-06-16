@@ -13,7 +13,7 @@ function App() {
       <MyProvider>
         <Router>
           <Routes>
-            <Route path="/" element={<MainApp />} />
+            <Route path="/udemx-test" element={<MainApp />} />
             <Route path="/purchase" element={<PurchasePage />} />
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/edit" element={<EditCar />} />
