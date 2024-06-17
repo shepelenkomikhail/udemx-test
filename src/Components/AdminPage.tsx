@@ -13,6 +13,7 @@ import {
   Box,
   Button,
   FormControl,
+  Image,
 } from "@chakra-ui/react";
 import { SearchIcon, Search2Icon } from "@chakra-ui/icons";
 import CarCard from "./CarCardComponent";
@@ -120,6 +121,22 @@ function AdminPage() {
   return (
     <ChakraProvider>
       <Box bg="gray.50" w={"100vw"} h={"100vw"}>
+        <button
+          style={{
+            left: "0",
+            top: "0",
+            position: "absolute",
+            marginTop: "20px",
+            marginLeft: "25px",
+          }}
+          onClick={() => {
+            navigate("//");
+          }}
+        >
+          <Image src="./assets/images/admin.png"></Image>
+          User
+        </button>
+
         <Center pt="30" pb="5" fontSize="4xl" as="b" color="orange.500">
           Welcome Admin!
         </Center>

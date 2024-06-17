@@ -13,7 +13,7 @@ import {
   Box,
   Button,
   FormControl,
-  background,
+  Image,
 } from "@chakra-ui/react";
 import { SearchIcon, Search2Icon } from "@chakra-ui/icons";
 import CarCard from "./CarCardComponent";
@@ -21,6 +21,7 @@ import StackComponent from "./StackComponent";
 
 import Pagination from "./Pagination";
 import { MyContext } from "../context/myProvider";
+import { useNavigate } from "react-router-dom";
 
 const getFilteredItems = (query, items) => {
   if (!query) return items;
@@ -111,9 +112,25 @@ export default function MainApp() {
   };
 
   const isError = !dateTo && !dateFrom && submitted;
+  const navigate = useNavigate();
 
   return (
     <Box bg="gray.50" w={"100vw"} h={"100vw"} style={{ height: "100vw" }}>
+      <button
+        style={{
+          right: "0",
+          top: "0",
+          position: "absolute",
+          marginTop: "20px",
+          marginRight: "25px",
+        }}
+        onClick={() => {
+          navigate("/admin");
+        }}
+      >
+        <Image src="./assets/images/admin.png"></Image>
+        Admin
+      </button>
       <Center pt="30" pb="5" fontSize="4xl" as="b" color="orange.500">
         Choose your dream car!
       </Center>
