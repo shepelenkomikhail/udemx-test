@@ -211,7 +211,7 @@ function AdminPage() {
             </WrapItem>
           ))}
         </Wrap>
-        <Center pb="8">
+        <Center pb="8" bg={"gray.50"}>
           <Pagination
             totalPosts={filteredItems.length}
             postsPerPage={postsPerPage}
