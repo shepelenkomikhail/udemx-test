@@ -1,3 +1,5 @@
+This task is done using React, Vite, Chakra UI, Yup, Formik.
+
 # Frontend development admission development task
 
 - ⏰ **Deadline**: The 11th business day following the assignment at **23:59:59 (CEST)**
