@@ -116,21 +116,22 @@ export default function MainApp() {
 
   return (
     <Box bg="gray.50" w={"100vw"} h={"100vw"} style={{ height: "100vw" }}>
-      <button
+      <Button
+        variant={"unstyled"}
         style={{
           right: "0",
           top: "0",
           position: "absolute",
-          marginTop: "20px",
-          marginRight: "25px",
         }}
+        mt={{ base: "0", md: "20px" }}
+        mr={{ base: "0", md: "25px" }}
         onClick={() => {
           navigate("/admin");
         }}
       >
         <Image src="./assets/images/admin.png"></Image>
         Admin
-      </button>
+      </Button>
       <Center pt="30" pb="5" fontSize="4xl" as="b" color="orange.500">
         Choose your dream car!
       </Center>

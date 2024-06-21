@@ -209,7 +209,7 @@ export const CustomForm = ({ price_per_day, id }: CustomFormProps) => {
                   <AlertDialogFooter>
                     <Button
                       ref={cancelRef}
-                      onClick={() => navigate("/")}
+                      onClick={() => navigate("//")}
                       bg="green.100"
                     >
                       Back to the main page
